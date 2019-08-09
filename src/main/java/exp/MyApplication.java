@@ -14,8 +14,6 @@ public class MyApplication {
 
 	private static ContainerLifecycle lifecycle = null;
 
-	@Inject
-	public int myValue;
 	
 	public static void main(String [] args) throws IOException {
 	
@@ -26,10 +24,15 @@ public class MyApplication {
 		lifecycle.startApplication(null);
 
 		final BeanManager beanManager = lifecycle.getBeanManager();
-		final Bean<?> bean = beanManager.getBeans(MyApplication.class).iterator().next();
+		final Bean<?> bean = beanManager.getBeans(MyBean.class).iterator().next();
 
-		final MyApplication myApp = (MyApplication) beanManager.getReference(bean, MyApplication.class, beanManager.createCreationalContext(bean));
-		System.out.println("MyValue = "+myApp.myValue);
+		final MyBean myBean = (MyBean) beanManager.getReference(bean, MyBean.class, beanManager.createCreationalContext(bean));
+		
+		// YOUR TEST CODE GOES HERE
+		
+		System.out.println("MyValue = "+myBean.myValue);
+		
+		////////////////////////////////
 
 		lifecycle.stopApplication(null);
 	}
