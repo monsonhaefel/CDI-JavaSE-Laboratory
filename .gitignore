@@ -1,0 +1,6 @@
+/target
+.*
+!.gitignore
+errors.txt
+dependency-reduced-pom.xml
+*.iml

@@ -3,6 +3,9 @@ package exp;
 import javax.enterprise.inject.spi.Bean;
 import javax.enterprise.inject.spi.BeanManager;
 import javax.inject.Inject;
+import java.io.PrintStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 import org.apache.webbeans.config.WebBeansContext;
 import org.apache.webbeans.spi.ContainerLifecycle;
@@ -14,7 +17,11 @@ public class MyApplication {
 	@Inject
 	public int myValue;
 	
-	public static void main(String [] args) {
+	public static void main(String [] args) throws IOException {
+	
+		PrintStream out = new PrintStream(new FileOutputStream("errors.txt"));
+		System.setErr(out);
+	
 		lifecycle = WebBeansContext.currentInstance().getService(ContainerLifecycle.class);
 		lifecycle.startApplication(null);
 
