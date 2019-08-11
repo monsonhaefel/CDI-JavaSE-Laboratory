@@ -17,7 +17,7 @@ public class CdiContainer implements java.lang.AutoCloseable {
 
 		Object myBean = null;
 
-		try (PrintStream out = new PrintStream(new FileOutputStream("errors.txt"))) {
+		try (PrintStream out = new PrintStream(new FileOutputStream("target/errors.txt"))) {
 			System.setErr(out);
 
 			lifecycle = WebBeansContext.currentInstance().getService(ContainerLifecycle.class);
